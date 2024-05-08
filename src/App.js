@@ -2,6 +2,7 @@ import "./App.css";
 import Carousel from "./Carousel";
 import photos from "./photos.js";
 
+
 /** App component, renders Carousel
  * 
  * Props: none
