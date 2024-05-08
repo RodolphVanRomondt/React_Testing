@@ -32,3 +32,25 @@ it("works when you click on the right arrow", function() {
     container.querySelector('img[alt="testing image 2"]')
   ).toBeInTheDocument();
 });
+
+it("should move to the first image", function () {
+  const { container } = render(<Carousel
+    photos={TEST_IMAGES}
+    title={"images for testing"}
+  />);
+
+  const rightArrow = container.querySelector(".bi-arrow-right-circle");
+  fireEvent.click(rightArrow);
+
+  expect(
+    container.querySelector('img[alt="testing image 2"]')
+  ).toBeInTheDocument();
+
+  const leftArrow = container.querySelector(".bi-arrow-left-circle");
+  fireEvent.click(leftArrow);
+
+  expect(
+    container.querySelector('img[alt="testing image 1"]')
+  ).toBeInTheDocument();
+
+});
