@@ -54,3 +54,25 @@ it("should move to the first image", function () {
   ).toBeInTheDocument();
 
 });
+
+it("misses left arrow on the 1st image", function () {
+  const { container, getByTestId, querySelector } = render(<Carousel
+    photos={TEST_IMAGES}
+    title={"images for testing"}
+  />);
+
+  expect(container.querySelector(".bi-arrow-left-circle")).not.toBeInTheDocument();
+});
+
+it("misses right arrow on the last image", function () {
+  const { container } = render(<Carousel
+    photos={TEST_IMAGES}
+    title={"images for testing"}
+  />);
+
+  const rightArrow = container.querySelector(".bi-arrow-right-circle");
+  fireEvent.click(rightArrow);
+  fireEvent.click(rightArrow);
+
+  expect(container.querySelector(".bi-arrow-right-circle")).not.toBeInTheDocument();
+});
